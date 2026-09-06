@@ -1,0 +1,310 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage[english, russian]{babel}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{indentfirst}
+\usepackage{geometry}
+\usepackage{titleps}
+\usepackage{mathtext}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{tikz}
+\setlength{\tabcolsep}{4pt}
+\newpagestyle{main}{
+\setheadrule{0pt}
+\sethead{}{}{}
+\setfootrule{0pt}
+\setfoot{}{}{}
+}
+\pagestyle{main}
+
+\usepackage{amsthm}
+\geometry{top=2cm}
+
+% Диаграммы Эйлера--Венна: #1 --- команды заливки, #2 --- подпись
+\newcommand{\venn}[2]{%
+\begin{tikzpicture}[scale=0.55]
+  \begin{scope}
+    #1
+  \end{scope}
+  \draw (0,0) circle (1) (1.2,0) circle (1);
+  \node at (-0.45,0) {$A$};
+  \node at (1.65,0) {$B$};
+  \node at (0.6,-1.5) {#2};
+\end{tikzpicture}}
+
+\begin{document}
+\begin{center}
+{\large КОНСПЕКТ ЛЕКЦИЙ}
+
+ПО ДИСЦИПЛИНЕ <<МАТЕМАТИЧЕСКИЙ АНАЛИЗ>>
+
+\vspace{5pt}
+\textbf{Элементы теории множеств и логики}
+\end{center}
+\vspace{10pt}
+
+\section*{Множества}
+
+\emph{Множество} --- произвольная совокупность определённых предметов нашей
+интуиции или интеллекта, которые можно отличить один от другого и которые
+представляются как единое целое.
+\hfill --- Георг Кантор
+
+Под \underline{множеством} понимают любую определённую совокупность объектов,
+различимых между собой. Объекты, из которых составлено множество, ---
+\underline{элементы множества}.
+
+$A, B, X$ --- множества; \quad $a, b, x, y$ --- элементы множества.
+\[
+  \boxed{x \in X, \quad y \notin X}
+\]
+
+Когда строится теория множеств, используется интуитивный принцип объёмности
+или аксиома экстенсиональности.
+
+Два множества равны, если каждый элемент множества равен каждому другому
+элементу множества.
+
+Множество называется \textbf{конечным}, если оно состоит из конечного числа
+элементов.
+
+Множество называется \textbf{бесконечным}, если оно содержит бесконечное число
+элементов.
+
+Если множество не содержит ни одного элемента, то оно называется
+\textbf{пустым} ($\varnothing$).
+
+В конкретных задачах элементы всех множеств берутся из некоторого одного
+достаточно широкого множества $U$, которое называется
+\underline{универсальным} \underline{множеством} (универсумом).
+
+\subsection*{Способы задания множества}
+
+\begin{enumerate}[noitemsep]
+  \item перечислением элементов;
+  \item рекурсивно (перечисляющей процедурой);
+  \item характеристическим свойством.
+\end{enumerate}
+
+\textbf{Пример 1 (рекурсивно).}
+\begin{enumerate}[noitemsep]
+  \item $3 \in X$;
+  \item если $x \in X$, то $\dfrac{1}{x} \in X$ и $(1 - x) \in X$;
+  \item других элементов в этом множестве нет.
+\end{enumerate}
+\[
+  X = \left\{ 3;\ \tfrac{1}{3};\ -2;\ -\tfrac{1}{2};\ \tfrac{2}{3};\ \tfrac{3}{2} \right\}
+\]
+
+\textbf{Пример 2 (характеристическим свойством).} % в оригинале подписан как «Пример 3»
+\[
+  A = \{\, x : x \in \mathbb{Z},\ x^{2} \le 4 \,\} = \{-2;\ -1;\ 0;\ 1;\ 2\}
+\]
+\[
+  B = \{\, x : x \in \mathbb{N},\ x \,\vdots\, 2 \,\} = \{2;\ 4;\ 6;\ \dots\}
+\]
+
+Чтобы избежать парадоксов, задание множеств ограничивают специальной
+аксиоматикой. В частности, используют \underline{аксиому регулярности}:
+\[
+  X \in X \ \text{--- недопустимо!} \qquad \fbox{Парадокс брадобрея!!!}
+\]
+
+\section*{Операции над множествами}
+
+\textbf{Соглашения:}
+\begin{itemize}[noitemsep]
+  \item $\Longleftrightarrow$ --- <<тогда и только тогда>>;
+  \item $\exists x$ (квантор существования) --- существует $x$ такой, что\dots;
+  \item $\forall x$ (квантор всеобщности) --- для любого (всякого) $x$;
+  \item $\Longrightarrow$ --- следует.
+\end{itemize}
+
+Множество $A$ называется \textbf{подмножеством} множества $B$, если
+$\forall x \in A\ (x \in B)$. При этом говорят, что $A$ содержится в $B$
+или $B$ включает $A$:
+\[
+  \boxed{A \subseteq B}
+\]
+
+Если $A \subset B$ и $B \subset A$, то множества называются \textbf{равными}
+($A = B$).
+
+Множества удобно изображать с помощью кругов Эйлера (диаграмма Венна):
+\begin{center}
+\begin{tikzpicture}[scale=0.55]
+  \draw (0,0) circle (1.6);
+  \draw (-0.4,-0.2) circle (0.8);
+  \node at (-0.4,-0.2) {$A$};
+  \node at (0.9,0.9) {$B$};
+  \node at (0,-2.1) {$A \subseteq B$};
+\end{tikzpicture}
+\end{center}
+
+\textbf{Объединение множеств} $A \cup B$:
+\[
+  A \cup B = \{\, x : x \in A \vee x \in B \,\}
+\]
+\begin{center}
+\venn{\fill[gray!40] (0,0) circle (1) (1.2,0) circle (1);}{$A \cup B$}
+\end{center}
+
+\textbf{Пересечение множеств} $A \cap B$ (обозначают также $AB$):
+\[
+  A \cap B = \{\, x : x \in A \wedge x \in B \,\}
+\]
+\begin{center}
+\venn{\clip (0,0) circle (1); \fill[gray!40] (1.2,0) circle (1);}{$A \cap B$}
+\end{center}
+
+\textbf{Разность множеств} $A \setminus B$:
+\begin{center}
+\venn{\clip (0,0) circle (1); \fill[gray!40, even odd rule] (0,0) circle (1) (1.2,0) circle (1);}{$A \setminus B$}
+\qquad
+\venn{\clip (1.2,0) circle (1); \fill[gray!40, even odd rule] (0,0) circle (1) (1.2,0) circle (1);}{$B \setminus A$}
+\end{center}
+
+\textbf{Симметричная разность множеств}:
+\[
+  A \,\triangle\, B = (A \setminus B) \cup (B \setminus A)
+\]
+\begin{center}
+\venn{\fill[gray!40, even odd rule] (0,0) circle (1) (1.2,0) circle (1);}{$A \,\triangle\, B$}
+\end{center}
+
+\textbf{Дополнение множества} относительно универсального множества:
+\[
+  \overline{A} = U \setminus A = CA
+\]
+\begin{center}
+\begin{tikzpicture}[scale=0.55]
+  \fill[gray!40] (-2,-1.4) rectangle (2,1.4);
+  \fill[white] (0,0) circle (0.8);
+  \draw (-2,-1.4) rectangle (2,1.4);
+  \draw (0,0) circle (0.8);
+  \node at (0,0) {$A$};
+  \node at (1.6,1.05) {$U$};
+  \node at (0,-1.9) {$\overline{A}$};
+\end{tikzpicture}
+\end{center}
+
+\subsection*{Свойства операций}
+
+\begin{itemize}[noitemsep]
+  \item \textbf{коммутативность}:
+    \[ A \cup B = B \cup A, \qquad A \cap B = B \cap A; \]
+  \item \textbf{ассоциативность}:
+    \[ (A \cup B) \cup C = A \cup (B \cup C), \qquad
+       (A \cap B) \cap C = A \cap (B \cap C); \]
+  \item \textbf{дистрибутивность}:
+    \[ (A \cup B) \cap C = (A \cap C) \cup (B \cap C), \qquad
+       (A \cap B) \cup C = (A \cup C) \cap (B \cup C); \]
+  \item \textbf{идемпотентность}:
+    \[ A \cup A = A, \qquad A \cap A = A; \]
+  \item \textbf{законы де Моргана} (правила двойственности):
+    \[ \overline{A \cup B} = \overline{A} \cap \overline{B}, \qquad
+       \overline{A \cap B} = \overline{A} \cup \overline{B}; \]
+  \item \textbf{поглощение}:
+    \[ A \cup (A \cap B) = A, \qquad A \cap (A \cup B) = A; \]
+  \item свойства $\overline{A}$, $\varnothing$ и $U$: % заголовок пункта в оригинале зачёркнут
+    \[
+      \begin{aligned}
+        A \cup \overline{A} &= U, & A \cup U &= U, \\
+        A \cap \overline{A} &= \varnothing, & A \cap U &= A, \\
+        A \cup \varnothing &= A, & U \cup \varnothing &= U, \\
+        A \cap \varnothing &= \varnothing, & U \cap \varnothing &= \varnothing.
+      \end{aligned}
+    \]
+\end{itemize}
+
+\section*{Алгебра высказываний}
+
+\textbf{Высказывание} --- такое предложение, которое либо истинно, либо ложно.
+Высказывание не может быть одновременно и истинным, и ложным.
+
+Высказывания обозначают заглавными буквами.
+
+Сопоставив истинному высказыванию символ $1$, а ложному --- $0$, введём
+функцию $\lambda$, заданную на совокупности всех высказываний и отвечающую
+следующему требованию:
+\[
+  \lambda(P) =
+  \begin{cases}
+    1, & \text{если } P \text{ --- истинно};\\
+    0, & \text{если } P \text{ --- ложно}.
+  \end{cases}
+\]
+Функцию $\lambda$ называют \textbf{функцией истинности}, а значение
+$\lambda(P)$ --- \textbf{логическим значением} высказывания $P$.
+
+\begin{itemize}
+  \item \textbf{Отрицанием} высказывания $P$ называется новое высказывание,
+    обозначаемое $\neg P$, которое истинно, если высказывание $P$ ложно,
+    и ложно, если высказывание $P$ истинно.
+    \[ \boxed{\neg P,\quad \overline{P},\quad !P} \]
+
+  \item \textbf{Конъюнкцией} двух высказываний $P$ и $Q$ называется новое
+    высказывание, обозначаемое $P \wedge Q$ или $P \,\&\, Q$, которое истинно
+    лишь в единственном случае, когда истинны оба высказывания $P$ и $Q$,
+    и ложно во всех остальных случаях (логическое~$\times$).
+    \begin{center}
+    \begin{tabular}{c|c|c}
+      $\lambda(P)$ & $\lambda(Q)$ & $\lambda(P \wedge Q)$ \\ \hline
+      0 & 0 & 0 \\
+      0 & 1 & 0 \\
+      1 & 0 & 0 \\
+      1 & 1 & 1 \\
+    \end{tabular}
+    \end{center}
+
+  \item \textbf{Дизъюнкцией} двух высказываний $P$ и $Q$ называется новое
+    высказывание, обозначаемое $P \vee Q$, которое истинно тогда и только
+    тогда, когда истинно хотя бы одно из высказываний $P$ или $Q$, и ложно
+    в единственном случае, когда оба высказывания $P$ и $Q$ ложны
+    (логическое~$+$).
+    \begin{center}
+    \begin{tabular}{c|c|c}
+      $\lambda(P)$ & $\lambda(Q)$ & $\lambda(P \vee Q)$ \\ \hline
+      0 & 0 & 0 \\
+      0 & 1 & 1 \\
+      1 & 0 & 1 \\
+      1 & 1 & 1 \\
+    \end{tabular}
+    \end{center}
+
+  \item \textbf{Импликацией} двух высказываний $P$ и $Q$ называется новое
+    высказывание, обозначаемое $P \Rightarrow Q$ (<<если $P$, то $Q$>>,
+    <<из $P$ следует $Q$>>), которое ложно в единственном случае, когда
+    высказывание $P$ истинно, а $Q$ ложно, а во всех остальных случаях ---
+    истинно.
+    \begin{center}
+    \begin{tabular}{c|c|c}
+      $\lambda(P)$ & $\lambda(Q)$ & $\lambda(P \Rightarrow Q)$ \\ \hline
+      0 & 0 & 1 \\
+      0 & 1 & 1 \\
+      1 & 0 & 0 \\
+      1 & 1 & 1 \\
+    \end{tabular}
+    \end{center}
+
+  \item \textbf{Эквиваленцией} двух высказываний $P$ и $Q$ называется новое
+    высказывание $P \Leftrightarrow Q$ (<<тогда и только тогда>>), которое
+    истинно в том и только в том случае, когда оба высказывания $P$ и $Q$
+    одновременно истинны или оба ложны, а во всех остальных случаях --- ложно.
+    \begin{center}
+    \begin{tabular}{c|c|c}
+      $\lambda(P)$ & $\lambda(Q)$ & $\lambda(P \Leftrightarrow Q)$ \\ \hline
+      0 & 0 & 1 \\
+      0 & 1 & 0 \\
+      1 & 0 & 0 \\
+      1 & 1 & 1 \\
+    \end{tabular}
+    \end{center}
+\end{itemize}
+
+\textbf{!} Операции над высказываниями аналогичны операциям над множествами.
+Свойства логических операций доказывают с помощью таблиц истинности.
+
+\end{document}
