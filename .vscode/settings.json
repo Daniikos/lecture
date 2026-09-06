@@ -1,0 +1,41 @@
+{
+  // Общие настройки проекта для VS Code. Личные — в User settings, не сюда.
+
+  // Переводы строк и кодировка (дублирует .editorconfig на случай, если
+  // расширение EditorConfig не установлено).
+  "files.eol": "\n",
+  "files.encoding": "utf8",
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+
+  // LaTeX Workshop: latexmk сам решает, сколько проходов нужно и нужен ли
+  // BibTeX. Рецепт "pdflatex → bibtex → pdflatex ×2" не использовать —
+  // он падает на документах без библиографии.
+  "latex-workshop.latex.recipe.default": "latexmk 🔃",
+  "latex-workshop.latex.autoBuild.run": "onSave",
+
+  // Весь мусор сборки (aux, log, synctex, pdf) — в build/ рядом с исходником.
+  // Папка в .gitignore.
+  "latex-workshop.latex.outDir": "%DIR%/build",
+
+  // PDF открывать во вкладке VS Code, SyncTeX в обе стороны.
+  "latex-workshop.view.pdf.viewer": "tab",
+
+  // Не показывать мусор сборки в проводнике и поиске.
+  "files.exclude": {
+    "**/build": true,
+    "**/.vs": true
+  },
+  "search.exclude": {
+    "**/build": true
+  },
+
+  "[latex]": {
+    "editor.tabSize": 2,
+    "editor.wordWrap": "on"
+  },
+  "[markdown]": {
+    "editor.wordWrap": "on",
+    "files.trimTrailingWhitespace": false
+  }
+}

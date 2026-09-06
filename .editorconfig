@@ -1,0 +1,22 @@
+# Читается VS Code (с расширением EditorConfig), TeXstudio, JetBrains, Vim/Emacs.
+# Дублирует .gitattributes на стороне редактора: файл сразу сохраняется правильно,
+# а не нормализуется git-ом при коммите.
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.{tex,sty,cls,bib}]
+indent_style = space
+indent_size = 2
+
+[*.md]
+# В Markdown два пробела в конце строки — перенос, не мусор.
+trim_trailing_whitespace = false
+
+[*.{yml,yaml,json}]
+indent_style = space
+indent_size = 2

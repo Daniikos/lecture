@@ -1,0 +1,24 @@
+# Нормализация переводов строк. Без этого файла Windows-редакторы молча
+# сохраняют CRLF, и diff в PR превращается в «изменён весь файл».
+* text=auto
+
+# Исходники — всегда LF в репозитории и в рабочей копии.
+*.tex   text eol=lf
+*.sty   text eol=lf
+*.cls   text eol=lf
+*.bib   text eol=lf
+*.md    text eol=lf
+*.yml   text eol=lf
+*.yaml  text eol=lf
+*.json  text eol=lf
+.gitignore      text eol=lf
+.gitattributes  text eol=lf
+.editorconfig   text eol=lf
+
+# Бинарники — не трогать.
+*.pdf  binary
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.svg  text eol=lf

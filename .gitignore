@@ -1,0 +1,55 @@
+# --- Сборка LaTeX -----------------------------------------------------------
+# Всё, что порождает latexmk/pdflatex. Восстанавливается одной сборкой,
+# в репозитории не нужно.
+build/
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.dvi
+*.fdb_latexmk
+*.fls
+*.idx
+*.ilg
+*.ind
+*.lof
+*.log
+*.lot
+*.nav
+*.out
+*.run.xml
+*.snm
+*.synctex
+*.synctex.gz
+*.synctex(busy)
+*.toc
+*.vrb
+*.xdv
+*.xwm
+
+# PDF собирает CI (см. .github/workflows/build.yml); локальные копии не коммитим.
+# Исключение — PDF-рисунки в assets/, если они появятся.
+*.pdf
+!assets/**/*.pdf
+
+# --- Редакторы и IDE --------------------------------------------------------
+# Visual Studio (не VS Code) — папка .vs/ появляется, если открыть каталог в VS.
+.vs/
+# VS Code: личные файлы игнорируем, общие настройки проекта — коммитим.
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+# JetBrains, Obsidian (если кто-то откроет репозиторий как vault)
+.idea/
+.obsidian/
+# Резервные копии и swap-файлы редакторов
+*~
+*.swp
+*.swo
+*.bak
+*.orig
+
+# --- ОС ---------------------------------------------------------------------
+Thumbs.db
+Desktop.ini
+.DS_Store
