@@ -1,0 +1,206 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage[english, russian]{babel}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{indentfirst}
+\usepackage{geometry}
+\usepackage{titleps}
+\usepackage{mathtext}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage{tikz}
+\usepackage{needspace}
+\setlength{\tabcolsep}{4pt}
+\newpagestyle{main}{
+\setheadrule{0pt}
+\sethead{}{}{}
+\setfootrule{0pt}
+\setfoot{}{}{}
+}
+\pagestyle{main}
+
+\usepackage{amsthm}
+\geometry{top=2cm}
+
+% Блоки схем алгоритмов рисуются в масштабе 1 клетка = 0.5 см
+\tikzset{blk/.style={x=0.5cm, y=0.5cm, line width=0.6pt}}
+
+\begin{document}
+\begin{center}
+{\large КОНСПЕКТ ЛЕКЦИЙ}
+
+ПО ДИСЦИПЛИНЕ <<ПРОГРАММИРОВАНИЕ>>
+\end{center}
+\vspace{10pt}
+
+\section*{Арифметические выражения}
+
+Операция: \texttt{17 + 2}. Оператор (команда, инструкция).
+
+Арифметическое выражение может состоять из:
+\begin{enumerate}[noitemsep, label=\arabic*)]
+  \item операций:
+    \begin{center}
+    \begin{tabular}{cl}
+      \texttt{+}  & сложение \\
+      \texttt{-}  & вычитание \\
+      \texttt{*}  & умножение \\
+      \texttt{/}  & деление \\
+      \texttt{//} & целочисленное деление \\
+      \texttt{\%} & остаток от деления \\
+      \texttt{**} & возведение в степень \\
+    \end{tabular}
+    \end{center}
+  \item скобок:
+    \[
+      \frac{a + b}{c + d} \;\Longrightarrow\; \texttt{(a + b) / (c + d)}
+    \]
+  \item переменных;
+  \item числовых констант;
+  \item математических функций:
+    \begin{center}
+    \begin{tabular}{ll}
+      1 способ & 2 способ \\
+      \texttt{import math} & \texttt{from math import *} \\
+      \texttt{math.log(4.8)} & \texttt{log(4.8)} \\
+    \end{tabular}
+    \end{center}
+  \item $\sqrt{x}$ --- \texttt{sqrt(x)}; \quad \texttt{x ** (1/2)} --- комплексное число!
+    (если введём отрицательное число);
+  \item тригонометрических функций --- аргумент в радианах;
+  \item \texttt{degrees} --- перевод из радиан в градусы;
+    \texttt{radians} --- перевод $x$ из градусов в радианы.
+\end{enumerate}
+
+\subsection*{Приоритет операций}
+
+\begin{enumerate}[noitemsep, label=\arabic*)]
+  \item то, что в \texttt{( )};
+  \item математические функции;
+  \item[3--4)] операция возведения в степень; унарная операция \texttt{(-)}:
+    \texttt{-5}, \texttt{-sin(x)}, \texttt{+5} (в мат. --- комплементарная); % так в оригинале
+  \item[5)] \texttt{*} \ \texttt{/} \ \texttt{\%} \ \texttt{//};
+  \item[6)] \texttt{+} \ \texttt{-}.
+\end{enumerate}
+
+\texttt{x = 1 + 2 + 3} --- по очереди слева направо.
+
+\texttt{2 ** 3 ** 2} $\to$ \texttt{512} --- справа налево.
+
+\texttt{\#} --- однострочный комментарий.
+
+\texttt{'''} многострочный комментарий \texttt{'''}.
+
+\section*{Тема 2. Линейные алгоритмы}
+
+\textbf{Алгоритм} --- это конечная последовательность действий решения
+какой-либо задачи.
+
+Способы представления алгоритма:
+\begin{enumerate}[noitemsep]
+  \item структурограммы;
+  \item схема алгоритма;
+  \item псевдокод;
+  \item словесная запись.
+\end{enumerate}
+
+\subsection*{Основные блоки схемы алгоритма}
+
+\begin{enumerate}[label=\arabic*)]
+  \item \Needspace{3cm}Вычислительный процесс
+    \begin{center}
+    \begin{tikzpicture}[blk]
+      \draw (0,0) rectangle (6,2);
+      \node[above] at (3,2) {6 кл};
+      \node[left] at (0,1) {2};
+    \end{tikzpicture}
+    \end{center}
+
+  \item \Needspace{3cm}Начало и конец процесса
+    \begin{center}
+    \begin{tikzpicture}[blk]
+      \draw[rounded corners=0.5cm] (0,0) rectangle (6,2);
+    \end{tikzpicture}
+    \end{center}
+
+  \item \Needspace{3cm}Ввод и вывод
+    \begin{center}
+    \begin{tikzpicture}[blk]
+      \draw (1,0) -- (7,0) -- (6,2) -- (0,2) -- cycle;
+    \end{tikzpicture}
+    \end{center}
+
+  \item \Needspace{3cm}Решение
+    \begin{center}
+    \begin{tikzpicture}[blk]
+      \draw (0,1) -- (3,2) -- (6,1) -- (3,0) -- cycle;
+      \node[above] at (3,2) {6};
+      \node[left] at (0,1) {2};
+    \end{tikzpicture}
+    \end{center}
+
+  \item \Needspace{3cm}Цикл с параметром (старый ГОСТ)
+    \begin{center}
+    \begin{tikzpicture}[blk]
+      \draw (0,1) -- (1,2) -- (5,2) -- (6,1) -- (5,0) -- (1,0) -- cycle;
+      \node[above] at (3,2) {6};
+      \node[left] at (0,1) {2};
+    \end{tikzpicture}
+    \end{center}
+
+  \item \Needspace{3cm}Цикл с параметром (новый ГОСТ)
+    \begin{center}
+    \begin{tikzpicture}[blk]
+      \draw (0,0) -- (6,0) -- (6,1.5) -- (5.5,2) -- (0.5,2) -- (0,1.5) -- cycle;
+    \end{tikzpicture}
+    \qquad
+    \begin{tikzpicture}[blk]
+      \draw (0,0.5) -- (0.5,0) -- (5.5,0) -- (6,0.5) -- (6,2) -- (0,2) -- cycle;
+    \end{tikzpicture}
+    \end{center}
+
+  \item \Needspace{3cm}Соединитель
+    \begin{center}
+    \begin{tikzpicture}[blk]
+      \draw (1,1) circle (1);
+      \node[above] at (1,2) {2};
+      \node[left] at (0,1) {2};
+    \end{tikzpicture}
+    \end{center}
+
+  \item \Needspace{3cm}Межстраничный соединитель
+    \begin{center}
+    \begin{tikzpicture}[x=1cm, y=1cm, line width=0.6pt]
+      \draw (0,1) -- (1,1) -- (1,0.35) -- (0.5,0) -- (0,0.35) -- cycle;
+      \node[above] at (0.5,1) {1};
+      \node[left] at (0,0.5) {1};
+    \end{tikzpicture}
+    \end{center}
+
+  \item \Needspace{3cm}Предопределённый процесс
+    \begin{center}
+    \begin{tikzpicture}[blk]
+      \draw (0,0) rectangle (6,2);
+      \draw (0.5,0) -- (0.5,2) (5.5,0) -- (5.5,2);
+      \node[above] at (3,2) {6};
+      \node[left] at (0,1) {2};
+    \end{tikzpicture}
+    \end{center}
+\end{enumerate}
+
+\subsection*{Правила составления}
+
+\begin{enumerate}[noitemsep, label=\arabic*)]
+  \item Одинаковая ширина блоков --- 6--8 клеток.
+  \item Высота блоков может быть различной.
+  \item Соединительная стрелка между блоками --- 1 клетка, по необходимости 2.
+  \item Математические функции пишем как в математике.
+  \item Подряд идущие ввод данных, вывод данных, присваивание объединяем
+    в один блок.
+  \item Каждое присваивание в блоке пишем с новой строки.
+  \item Схема алгоритма изображается без привязки к конкретному языку
+    программирования.
+  \item Схема алгоритма должна занимать в высоту не более листа А4.
+\end{enumerate}
+
+\end{document}
