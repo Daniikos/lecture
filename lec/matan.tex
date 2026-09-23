@@ -1,26 +1,5 @@
 \documentclass[a4paper, 12pt]{article}
-\usepackage[english, russian]{babel}
-\usepackage[T2A]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage{indentfirst}
-\usepackage{geometry}
-\usepackage{titleps}
-\usepackage{mathtext}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{enumitem}
-\usepackage{tikz}
-\setlength{\tabcolsep}{4pt}
-\newpagestyle{main}{
-\setheadrule{0pt}
-\sethead{}{}{}
-\setfootrule{0pt}
-\setfoot{}{}{}
-}
-\pagestyle{main}
-
-\usepackage{amsthm}
-\geometry{top=2cm}
+\input{preamble.tex}
 
 % Диаграммы Эйлера--Венна: #1 --- команды заливки, #2 --- подпись
 \newcommand{\venn}[2]{%
@@ -40,12 +19,18 @@
 
 ПО ДИСЦИПЛИНЕ <<МАТЕМАТИЧЕСКИЙ АНАЛИЗ>>
 
+
+\tableofcontents
+\label{contents}
+
+\pagebreak
+
 \vspace{5pt}
 \textbf{Элементы теории множеств и логики}
 \end{center}
 \vspace{10pt}
 
-\section*{Множества}
+\section{Множества}
 
 \emph{Множество} --- произвольная совокупность определённых предметов нашей
 интуиции или интеллекта, которые можно отличить один от другого и которые
@@ -80,7 +65,7 @@ $A, B, X$ --- множества; \quad $a, b, x, y$ --- элементы мно
 достаточно широкого множества $U$, которое называется
 \underline{универсальным} \underline{множеством} (универсумом).
 
-\subsection*{Способы задания множества}
+\subsection{Способы задания множества}
 
 \begin{enumerate}[noitemsep]
   \item перечислением элементов;
@@ -112,7 +97,7 @@ $A, B, X$ --- множества; \quad $a, b, x, y$ --- элементы мно
   X \in X \ \text{--- недопустимо!} \qquad \fbox{Парадокс брадобрея!!!}
 \]
 
-\section*{Операции над множествами}
+\subsection{Операции над множествами}
 
 \textbf{Соглашения:}
 \begin{itemize}[noitemsep]
@@ -190,7 +175,7 @@ $\forall x \in A\ (x \in B)$. При этом говорят, что $A$ сод�
 \end{tikzpicture}
 \end{center}
 
-\subsection*{Свойства операций}
+\subsection{Свойства операций}
 
 \begin{itemize}[noitemsep]
   \item \textbf{коммутативность}:
@@ -219,7 +204,7 @@ $\forall x \in A\ (x \in B)$. При этом говорят, что $A$ сод�
     \]
 \end{itemize}
 
-\section*{Алгебра высказываний}
+\section{Алгебра высказываний}
 
 \textbf{Высказывание} --- такое предложение, которое либо истинно, либо ложно.
 Высказывание не может быть одновременно и истинным, и ложным.

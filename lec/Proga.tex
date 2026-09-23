@@ -1,14 +1,5 @@
 \documentclass[a4paper, 12pt]{article}
-\usepackage[english, russian]{babel}
-\usepackage[T2A]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage{indentfirst}
-\usepackage{geometry}
-\usepackage{titleps}
-\usepackage{mathtext}
-\usepackage{amsmath}
-\usepackage{enumitem}
-\usepackage{tikz}
+\input{preamble.tex}
 \usepackage{needspace}
 \setlength{\tabcolsep}{4pt}
 \newpagestyle{main}{
@@ -19,8 +10,6 @@
 }
 \pagestyle{main}
 
-\usepackage{amsthm}
-\geometry{top=2cm}
 
 % Блоки схем алгоритмов рисуются в масштабе 1 клетка = 0.5 см
 \tikzset{blk/.style={x=0.5cm, y=0.5cm, line width=0.6pt}}
@@ -30,10 +19,15 @@
 {\large КОНСПЕКТ ЛЕКЦИЙ}
 
 ПО ДИСЦИПЛИНЕ <<ПРОГРАММИРОВАНИЕ>>
+\tableofcontents
+\label{contents}
+
+\pagebreak
+
 \end{center}
 \vspace{10pt}
 
-\section*{Арифметические выражения}
+\section{Тема 1. Арифметические выражения}
 
 Операция: \texttt{17 + 2}. Оператор (команда, инструкция).
 
@@ -72,7 +66,7 @@
     \texttt{radians} --- перевод $x$ из градусов в радианы.
 \end{enumerate}
 
-\subsection*{Приоритет операций}
+\subsection{Приоритет операций}
 
 \begin{enumerate}[noitemsep, label=\arabic*)]
   \item то, что в \texttt{( )};
@@ -91,7 +85,7 @@
 
 \texttt{'''} многострочный комментарий \texttt{'''}.
 
-\section*{Тема 2. Линейные алгоритмы}
+\section{Тема 2. Линейные алгоритмы}
 
 \textbf{Алгоритм} --- это конечная последовательность действий решения
 какой-либо задачи.
@@ -104,7 +98,7 @@
   \item словесная запись.
 \end{enumerate}
 
-\subsection*{Основные блоки схемы алгоритма}
+\subsection{Основные блоки схемы алгоритма}
 
 \begin{enumerate}[label=\arabic*)]
   \item \Needspace{3cm}Вычислительный процесс
@@ -188,7 +182,7 @@
     \end{center}
 \end{enumerate}
 
-\subsection*{Правила составления}
+\subsection{Правила составления}
 
 \begin{enumerate}[noitemsep, label=\arabic*)]
   \item Одинаковая ширина блоков --- 6--8 клеток.

@@ -1,15 +1,5 @@
 \documentclass[a4paper, 12pt]{article}
-\usepackage[english, russian]{babel}
-\usepackage[T2A]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage{indentfirst}
-\usepackage{geometry}
-\usepackage{titleps}
-\usepackage{mathtext}
-\usepackage{amsmath}
-\usepackage{enumitem}
-\usepackage{tabularx}
-\usepackage{tikz}
+\input{preamble.tex}
 \usetikzlibrary{positioning}
 \setlength{\tabcolsep}{4pt}
 \newpagestyle{main}{
@@ -20,20 +10,23 @@
 }
 \pagestyle{main}
 
-\usepackage{amsthm}
-\geometry{top=2cm}
 \begin{document}
 \begin{center}
 {\large КОНСПЕКТ ЛЕКЦИЙ}
 
 ПО ДИСЦИПЛИНЕ <<ТЕОРЕТИЧЕСКАЯ ИНФОРМАТИКА>>
 
+\tableofcontents
+\label{contents}
+
+\pagebreak
+
 \vspace{5pt}
 \textbf{Основы теории информации}
 \end{center}
 \vspace{10pt}
 
-\section*{Информация и данные}
+\section{Информация и данные}
 
 \textbf{Информация} --- это совокупность сведений, полученных путём наблюдения
 и изучения, расширяющих представление об объектах, явлениях окружающей среды,
@@ -44,7 +37,7 @@
 
 Основоположник теории информации --- \underline{Шеннон}.
 
-\section*{Система передачи информации}
+\subsection{Система передачи информации}
 
 Обмен информацией происходит между людьми, между людьми и окружающим миром.
 Информацию передаёт какой-либо объект, система.
@@ -129,7 +122,7 @@
 \end{tabularx}
 \end{center}
 
-\section*{Дискретные и непрерывные сигнальные каналы}
+\section{Дискретные и непрерывные сигнальные каналы}
 
 Если параметр сигнала принимает конечное число значений и при этом они все
 могут быть пронумерованы, то этот сигнал называется \underline{дискретным}.
@@ -150,7 +143,7 @@
 Для передачи информации используются непрерывные и дискретные каналы связи.
 Сигналы переводят из непрерывных в дискретные и обратно.
 
-\section*{Дискретизация}
+\subsection{Дискретизация}
 
 % Страница с дискретизацией читается хуже остальных; сомнительные места помечены.
 \textbf{Дискретизация} --- это процесс преобразования непрерывного сигнала

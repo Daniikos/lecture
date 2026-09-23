@@ -1,0 +1,75 @@
+
+\usepackage[english,russian]{babel}
+\usepackage[T2A]{fontenc}
+
+
+% Абзацы и геометрия страницы
+\usepackage{indentfirst}
+\usepackage{geometry}
+
+% Математика
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+% Графика
+\usepackage{tikz}
+\theoremstyle{definition}
+\newtheorem{definition}{Определение}
+\newtheorem{example}{Пример}
+\newtheorem{remark}{Замечание}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Теорема}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\eps}{\varepsilon}
+\newtheorem{axiom}{Аксиома}
+
+\usepackage{cancel}
+
+% Списки и таблицы
+\usepackage{enumitem}
+\usepackage{tabularx}
+
+% Дополнительные пакеты
+\usepackage{blindtext}
+\usepackage{titlesec}
+
+% Ссылки
+\usepackage[
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=blue,
+    citecolor=blue
+]{hyperref}
+
+% Колонтитулы
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+
+% Берём название из \section
+\renewcommand{\sectionmark}[1]{\markright{#1}}
+
+\fancyhead[L]{\rightmark}
+\fancyhead[R]{\hyperref[contents]{Содержание}}
+
+\fancyfoot[C]{\thepage}
+
+\renewcommand{\headrulewidth}{0.4pt}
+
+
+% Своя стрелка
+\newcommand{\myarrow}{%
+    \begin{tikzpicture}[baseline=-0.5ex, scale=0.35]
+        \draw[->, line width=0.8pt]
+            (0,0.5)
+            .. controls (-0.2,0.2) and (-0.2,-0.2) ..
+            (0.2,-0.2)
+            .. controls (0.5,-0.2) and (0.8,-0.2) ..
+            (1.2,-0.2);
+    \end{tikzpicture}%
+}
